@@ -30,6 +30,8 @@ public class ApiResponse {
 		this.flag = flag;
 	}
 	
-	
+	public boolean getFlag() {
+		return this.flag;
+	}
 
 }
