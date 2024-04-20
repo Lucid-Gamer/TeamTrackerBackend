@@ -19,10 +19,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Autowired
 	private DepartmentRepository repository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Override
 	public ApiResponse getAllDepartments() {
 		Map<String, Object> respObj = new HashMap<>();
@@ -30,14 +30,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<DepartmentDTO> deptListDTO = null;
 		try {
 			deptList = this.repository.findAll();
-			if (deptList != null) {
+			if (deptList != null && !deptList.isEmpty()) {
 				deptListDTO = deptList.stream()
 						.map(dept -> this.modelMapper.map(dept, DepartmentDTO.class))
 						.collect(Collectors.toList());
 				respObj.put("respObj", deptListDTO);
 				return new ApiResponse(respObj, "Success", true);
+			} else {
+				return new ApiResponse("The list of departments is empty", false);
 			}
-			return new ApiResponse("The list of departments is empty", false);
+
 		} catch (Exception e) {
 			return new ApiResponse(e.getMessage(), false);
 		}
