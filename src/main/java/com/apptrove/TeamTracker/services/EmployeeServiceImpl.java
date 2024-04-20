@@ -1,15 +1,12 @@
 package com.apptrove.TeamTracker.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.apptrove.TeamTracker.entities.Employee;
 import com.apptrove.TeamTracker.payload.ApiResponse;
 import com.apptrove.TeamTracker.payload.EmployeeDTO;
@@ -49,7 +46,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public ApiResponse findEmployeeById(Integer id) {
-		// TODO Auto-generated method stub
+		ApiResponse apiResponse = null;
+		Map<String, Object> respObj = new HashMap<>();
+		Employee employee = null;
+		EmployeeDTO employeeDTO = null;
+		try {
+			
+		} catch (Exception e) {
+			return new ApiResponse(e.getMessage(), false);
+		}
 		return null;
 	}
 
