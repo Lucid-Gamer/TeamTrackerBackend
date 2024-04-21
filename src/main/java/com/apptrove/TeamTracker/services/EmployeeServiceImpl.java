@@ -66,6 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			respObj.put("respObj", employeeDTO);
 			apiResponse = new ApiResponse(respObj, "Success", true);
 		} catch (Exception e) {
+
 			return new ApiResponse(e.getMessage(), false);
 		}
 		return apiResponse;
@@ -104,7 +105,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			updatedEmp = this.modelMapper.map(updatedEmployeeDTO, Employee.class);
 			updatedEmp.setDepartment(dept);
 			updatedEmp = this.repository.save(updatedEmp);
-			respObj.put("respObj", updatedEmp);
+			respObj.put("respObj", this.modelMapper.map(updatedEmp, EmployeeDTO.class));
 			apiResponse = new ApiResponse(respObj, "Success", true);
 		} catch (Exception e) {
 			return new ApiResponse(e.getMessage(), false);

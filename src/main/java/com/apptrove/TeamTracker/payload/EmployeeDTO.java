@@ -23,5 +23,4 @@ public class EmployeeDTO {
 	private int department_id;
 	private DepartmentDTO department;
 
-	
 }
